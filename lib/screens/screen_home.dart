@@ -4,7 +4,7 @@ import 'package:day_1_dec_8/Resources/constants/constants.dart';
 import 'package:day_1_dec_8/Resources/market%20%20bottom%20tab/market_bottom_tab.dart';
 import 'package:day_1_dec_8/Resources/signals%20screen/signalsScreen.dart';
 import 'package:flutter/material.dart';
-import '../Resources/Common res/read_tab_resources/Read_Tab.dart';
+import '../Resources/read_tab_resources/Read_Tab.dart';
 import '../Resources/app drawer/app_drawer.dart';
 import '../Resources/homescreen/traders_tab.dart';
 
