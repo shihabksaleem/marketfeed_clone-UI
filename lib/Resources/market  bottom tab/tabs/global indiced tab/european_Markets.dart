@@ -1,10 +1,10 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import '../../../Common res/Market_Card_Refactored.dart';
 
-class SectoralIndicesColum extends StatelessWidget {
-  const SectoralIndicesColum({super.key});
-
+class EuropeanMarketsData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,50 +14,42 @@ class SectoralIndicesColum extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'Sectoral Indices',
+          'European Markets',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 10,
         ),
         MarketCardRefactored(
+          globalIndex: true,
           cardHeading: 'NIFTY BANK',
           color: Colors.red,
         ),
         MarketCardRefactored(
+          activeMarket: Colors.green,
+          globalIndex: true,
           cardHeading: 'NIFTY AUTO',
           color: Colors.green,
         ),
         MarketCardRefactored(
+          activeMarket: Colors.green,
+          globalIndex: true,
           cardHeading: 'NIFTY FINSERV',
           color: Colors.green,
         ),
         MarketCardRefactored(
+          globalIndex: true,
           cardHeading: 'NIFTY FMCG',
           color: Colors.red,
         ),
         MarketCardRefactored(
+          globalIndex: true,
           cardHeading: 'NIFTY IT',
           color: Colors.red,
         ),
         MarketCardRefactored(
+          globalIndex: true,
           cardHeading: 'NIFTY MEDIA',
-          color: Colors.red,
-        ),
-        MarketCardRefactored(
-          cardHeading: 'NIFTY METAL',
-          color: Colors.green,
-        ),
-        MarketCardRefactored(
-          cardHeading: 'NIFTY PHARMA',
-          color: Colors.green,
-        ),
-        MarketCardRefactored(
-          cardHeading: 'NIFTY PSU BANK',
-          color: Colors.red,
-        ),
-        MarketCardRefactored(
-          cardHeading: 'NIFTY REALTY',
           color: Colors.red,
         ),
       ],

@@ -1,45 +1,57 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import '../../../Common res/Market_Card_Refactored.dart';
 
-class BroadMarketIndicesColum extends StatelessWidget {
+class UsMarketsData extends StatelessWidget {
+  const UsMarketsData({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 30,
+          height: 10,
         ),
         Text(
-          'Broad Market Indices',
+          'US Markets',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 10,
         ),
         MarketCardRefactored(
-          cardHeading: 'INDIA VIX',
+          globalIndex: true,
+          cardHeading: 'NIFTY BANK',
           color: Colors.red,
         ),
         MarketCardRefactored(
-          cardHeading: 'NIFTY 100',
+          globalIndex: true,
+          activeMarket: Colors.green,
+          cardHeading: 'NIFTY AUTO',
           color: Colors.green,
         ),
         MarketCardRefactored(
-          cardHeading: 'NIFTY 200',
+          activeMarket: Colors.green,
+          globalIndex: true,
+          cardHeading: 'NIFTY FINSERV',
           color: Colors.green,
         ),
         MarketCardRefactored(
-          cardHeading: 'NIFTY 500',
+          globalIndex: true,
+          cardHeading: 'NIFTY FMCG',
           color: Colors.red,
         ),
         MarketCardRefactored(
-          cardHeading: 'NIFTY MIDCAP 50',
+          globalIndex: true,
+          cardHeading: 'NIFTY IT',
           color: Colors.red,
         ),
         MarketCardRefactored(
-          cardHeading: 'NIFTY SMLCAP 50 ',
+          globalIndex: true,
+          cardHeading: 'NIFTY MEDIA',
           color: Colors.red,
         ),
       ],

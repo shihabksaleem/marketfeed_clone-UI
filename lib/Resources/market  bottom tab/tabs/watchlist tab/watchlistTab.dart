@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-import '../../Common res/Market_Card_Refactored.dart';
+import '../../../Common res/Market_Card_Refactored.dart';
 
 class WatchlistTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List watchlistListData = [
+    List watchlistListDataList = [
       MarketCardRefactored(
         cardHeading: 'NIFTY PHARMA',
         color: Colors.red,
@@ -29,6 +29,10 @@ class WatchlistTab extends StatelessWidget {
         color: Colors.red,
       ),
     ];
+
+// to reverse the list to the last added item on the top of the screen
+    List watchlistListDataListreversed =
+        watchlistListDataList.reversed.toList();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -45,7 +49,8 @@ class WatchlistTab extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: 5,
-              itemBuilder: (context, index) => watchlistListData[index],
+              itemBuilder: (context, index) =>
+                  watchlistListDataListreversed[index],
             ),
           ),
         ],

@@ -1,11 +1,18 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class MarketCardRefactored extends StatelessWidget {
   final Color color;
   final String cardHeading;
-
+  final bool globalIndex;
+  final Color activeMarket;
   const MarketCardRefactored(
-      {super.key, required this.color, required this.cardHeading});
+      {super.key,
+      required this.color,
+      required this.cardHeading,
+      this.globalIndex = false,
+      this.activeMarket = Colors.red});
 
   @override
   Widget build(BuildContext context) {
@@ -17,30 +24,62 @@ class MarketCardRefactored extends StatelessWidget {
             color: Colors.grey.shade300,
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(
+            offset: const Offset(
               1,
               3,
             ),
           )
         ], color: Colors.white, borderRadius: BorderRadius.circular(5)),
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(12),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(width: 130, child: Text(cardHeading)),
-            Text('44,044,44'),
+            Container(
+                width: 130,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: Text(cardHeading),
+                    ),
+                    globalIndex
+                        ? Row(
+                            children: [
+                              Icon(
+                                Icons.fiber_manual_record,
+                                size: 10,
+                                color: activeMarket,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                child: Text(
+                                  'USA',
+                                  style: TextStyle(
+                                      color: Colors.grey.shade500,
+                                      fontSize: 13),
+                                ),
+                              )
+                            ],
+                          )
+                        : SizedBox()
+                  ],
+                )),
+            const Text('44,044,44'),
             Container(
               decoration: BoxDecoration(
                   color: color, borderRadius: BorderRadius.circular(4)),
               width: 50,
               height: 20,
-              child: Center(
+              child: const Center(
                   child: Text(
                 '+0.01',
                 style: TextStyle(color: Colors.white),
               )),
             ),
-            Text('+6.80'),
+            const Text('+6.80'),
           ],
         ),
       ),
