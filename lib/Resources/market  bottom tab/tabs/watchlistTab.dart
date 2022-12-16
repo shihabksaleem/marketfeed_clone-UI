@@ -2,89 +2,53 @@
 
 import 'package:flutter/material.dart';
 
+import '../../Common res/Market_Card_Refactored.dart';
+
 class WatchlistTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List watchlistListData = [
       MarketCardRefactored(
+        cardHeading: 'NIFTY PHARMA',
         color: Colors.red,
       ),
       MarketCardRefactored(
+        cardHeading: 'NIFTY PHARMA',
         color: Colors.green,
       ),
       MarketCardRefactored(
+        cardHeading: 'NIFTY PHARMA',
         color: Colors.green,
       ),
       MarketCardRefactored(
+        cardHeading: 'NIFTY PHARMA',
         color: Colors.red,
       ),
       MarketCardRefactored(
+        cardHeading: 'NIFTY PHARMA',
         color: Colors.red,
       ),
     ];
-    return Column(
-      children: [
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-            child: Text(
-          'Last updated on Thu 15 Dec 12:50 PM',
-          style: TextStyle(
-              fontSize: 10, letterSpacing: .2, color: Colors.grey.shade600),
-        )),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 5,
-            itemBuilder: (context, index) => watchlistListData[index],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class MarketCardRefactored extends StatelessWidget {
-  final Color color;
-
-  const MarketCardRefactored({super.key, required this.color});
-
-  @override
-  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25, top: 15),
-      child: Container(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade300,
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: Offset(
-              1,
-              3,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+              child: Text(
+            'Last updated on Thu 15 Dec 12:50 PM',
+            style: TextStyle(
+                fontSize: 12, letterSpacing: .2, color: Colors.grey.shade600),
+          )),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => watchlistListData[index],
             ),
-          )
-        ], color: Colors.white, borderRadius: BorderRadius.circular(3)),
-        padding: EdgeInsets.all(10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('NIFTY BANK '),
-            Text('44,044,44'),
-            Container(
-              decoration: BoxDecoration(
-                  color: color, borderRadius: BorderRadius.circular(4)),
-              width: 50,
-              height: 20,
-              child: Center(
-                  child: Text(
-                '+0.01',
-                style: TextStyle(color: Colors.white),
-              )),
-            ),
-            Text('+6.80'),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

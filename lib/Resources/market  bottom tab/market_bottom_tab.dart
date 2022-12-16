@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
 import '../read_tab_resources/custom_tab_Indicator.dart';
+import 'tabs/INDIAN INDICED TAB/indian_indices_Tab.dart';
 
 class MarketBottomTab extends StatelessWidget {
   @override
@@ -35,13 +36,7 @@ class MarketBottomTab extends StatelessWidget {
           body: TabBarView(
             children: <Widget>[
               WatchlistTab(),
-              Center(
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-              ),
+              IndianIndicesTab(),
               Center(
                 child: Container(
                   height: 100,
