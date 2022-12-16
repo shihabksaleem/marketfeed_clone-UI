@@ -24,6 +24,10 @@ List<Map> readJargonsCardDataList = [
   }
 ];
 
+// to reverse the list to the last added item on the top of the screen
+List readJargonsCardDataListReversed =
+    readJargonsCardDataList.reversed.toList();
+
 class ReadJargonsTab extends StatelessWidget {
   const ReadJargonsTab({super.key});
 
@@ -32,16 +36,18 @@ class ReadJargonsTab extends StatelessWidget {
     return ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 4),
         itemBuilder: (context, index) => ReadMarketTabRefacted(
-              imagePath: readJargonsCardDataList[index]['imagePath'],
-              publisherPhoto: readJargonsCardDataList[index]['publisherPhoto'],
-              publisherName: readJargonsCardDataList[index]['publisherName'],
-              newsDescription: readJargonsCardDataList[index]
+              imagePath: readJargonsCardDataListReversed[index]['imagePath'],
+              publisherPhoto: readJargonsCardDataListReversed[index]
+                  ['publisherPhoto'],
+              publisherName: readJargonsCardDataListReversed[index]
+                  ['publisherName'],
+              newsDescription: readJargonsCardDataListReversed[index]
                   ['newsDescription'],
             ),
         separatorBuilder: (context, index) => SizedBox(
               height: 3,
             ),
-        itemCount: readJargonsCardDataList.length);
+        itemCount: readJargonsCardDataListReversed.length);
   }
 }
 

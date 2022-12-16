@@ -63,24 +63,30 @@ class ReadMarketTab extends StatelessWidget {
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       }
     ];
+
+// to reverse the list to the last added item on the top of the screen
+    List readMarketCardDataListReversed =
+        readMarketCardDataList.reversed.toList();
+
     return Column(
       children: [
         Expanded(
           child: ListView.separated(
               padding: EdgeInsets.symmetric(vertical: 4),
               itemBuilder: (context, index) => ReadMarketTabRefacted(
-                    imagePath: readMarketCardDataList[index]['imagePath'],
-                    publisherPhoto: readMarketCardDataList[index]
+                    imagePath: readMarketCardDataListReversed[index]
+                        ['imagePath'],
+                    publisherPhoto: readMarketCardDataListReversed[index]
                         ['publisherPhoto'],
-                    publisherName: readMarketCardDataList[index]
+                    publisherName: readMarketCardDataListReversed[index]
                         ['publisherName'],
-                    newsDescription: readMarketCardDataList[index]
+                    newsDescription: readMarketCardDataListReversed[index]
                         ['newsDescription'],
                   ),
               separatorBuilder: (context, index) => SizedBox(
                     height: 2,
                   ),
-              itemCount: readMarketCardDataList.length),
+              itemCount: readMarketCardDataListReversed.length),
         )
       ],
     );

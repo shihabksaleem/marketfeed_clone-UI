@@ -24,6 +24,10 @@ List<Map> readEditorialCardDataList = [
   }
 ];
 
+// to reverse the list to the last added item on the top of the screen
+List readEditorialCardDataListReversed =
+    readEditorialCardDataList.reversed.toList();
+
 class ReadEditorialTab extends StatelessWidget {
   const ReadEditorialTab({super.key});
 
@@ -32,17 +36,18 @@ class ReadEditorialTab extends StatelessWidget {
     return ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 4),
         itemBuilder: (context, index) => ReadMarketTabRefacted(
-              imagePath: readEditorialCardDataList[index]['imagePath'],
-              publisherPhoto: readEditorialCardDataList[index]
+              imagePath: readEditorialCardDataListReversed[index]['imagePath'],
+              publisherPhoto: readEditorialCardDataListReversed[index]
                   ['publisherPhoto'],
-              publisherName: readEditorialCardDataList[index]['publisherName'],
-              newsDescription: readEditorialCardDataList[index]
+              publisherName: readEditorialCardDataListReversed[index]
+                  ['publisherName'],
+              newsDescription: readEditorialCardDataListReversed[index]
                   ['newsDescription'],
             ),
         separatorBuilder: (context, index) => SizedBox(
               height: 3,
             ),
-        itemCount: readEditorialCardDataList.length);
+        itemCount: readEditorialCardDataListReversed.length);
   }
 }
 

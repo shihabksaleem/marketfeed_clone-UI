@@ -72,17 +72,21 @@ class SignalsTab extends StatelessWidget {
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
     ];
+    // to reverse the list to the last added item on the top of the screen
+    List signalsCardDataListReaversed = signalsCardDataList.reversed.toList();
     return ListView.builder(
-        reverse: true,
         itemBuilder: (context, index) => SignalScreenCardRefactered(
-              image: signalsCardDataList[index]['imageVisibility'],
-              imagePath: signalsCardDataList[index]['imagePath'],
-              publisherPhoto: signalsCardDataList[index]['publisherPhoto'],
-              publisherName: signalsCardDataList[index]['publisherName'],
-              newsDescription: signalsCardDataList[index]['newsDescription'],
-              cardHeading: signalsCardDataList[index]['cardHeading'],
+              image: signalsCardDataListReaversed[index]['imageVisibility'],
+              imagePath: signalsCardDataListReaversed[index]['imagePath'],
+              publisherPhoto: signalsCardDataListReaversed[index]
+                  ['publisherPhoto'],
+              publisherName: signalsCardDataListReaversed[index]
+                  ['publisherName'],
+              newsDescription: signalsCardDataListReaversed[index]
+                  ['newsDescription'],
+              cardHeading: signalsCardDataListReaversed[index]['cardHeading'],
             ),
-        itemCount: signalsCardDataList.length);
+        itemCount: signalsCardDataListReaversed.length);
   }
 }
 
