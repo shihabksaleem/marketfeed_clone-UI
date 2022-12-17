@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../Common res/Market_Card_Refactored.dart';
 import 'Nifty_Sensex_Container.dart';
 import 'broad_market_colum.dart';
 import 'sectoral_indices_colum.dart';
