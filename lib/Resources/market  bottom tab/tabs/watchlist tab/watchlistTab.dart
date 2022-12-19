@@ -34,27 +34,27 @@ class WatchlistTab extends StatelessWidget {
     List watchlistListDataListreversed =
         watchlistListDataList.reversed.toList();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-              child: Text(
-            'Last updated on Thu 15 Dec 12:50 PM',
-            style: TextStyle(
-                fontSize: 12, letterSpacing: .2, color: Colors.grey.shade600),
-          )),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) =>
-                  watchlistListDataListreversed[index],
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
             ),
-          ),
-        ],
-      ),
-    );
+            Container(
+                child: Text(
+              'Last updated on Thu 15 Dec 12:50 PM',
+              style: TextStyle(
+                  fontSize: 12, letterSpacing: .2, color: Colors.grey.shade600),
+            )),
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: watchlistListDataList.length,
+                itemBuilder: (context, index) =>
+                    watchlistListDataListreversed[index],
+              ),
+            ),
+          ],
+        ));
   }
 }

@@ -14,6 +14,7 @@ class IndianIndicesTab extends StatelessWidget {
         horizontal: 18,
       ),
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
           IndianIndicesTop(),
           SectoralIndicesColum(),
@@ -31,7 +32,6 @@ class IndianIndicesTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
           height: 10,

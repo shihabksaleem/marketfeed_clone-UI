@@ -56,7 +56,7 @@ class ReadTab extends StatelessWidget {
               ),
             )
           ],
-          body: Expanded(
+          body: Container(
             child: TabBarView(
               children: <Widget>[
                 ReadMarketTab(),
