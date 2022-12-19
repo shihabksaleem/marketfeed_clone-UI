@@ -4,6 +4,7 @@ import 'package:day_1_dec_8/Resources/market%20%20bottom%20tab/tabs/global%20ind
 import 'package:day_1_dec_8/Resources/market%20%20bottom%20tab/tabs/leaderborad%20tab/leader_board.dart';
 import 'package:flutter/material.dart';
 
+import '../app drawer/app_drawer.dart';
 import '../constants/constants.dart';
 import '../read_tab_resources/custom_tab_Indicator.dart';
 import 'tabs/indian indices tab/indian_indices_Tab.dart';
@@ -14,35 +15,57 @@ class MarketBottomTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 4, // length of tabs
-        initialIndex: 0,
+
         child: Scaffold(
-          backgroundColor: kHomeScaffoldColor,
-          appBar: AppBar(
-            elevation: 0,
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(0),
-              child: TabBar(
-                isScrollable: true,
-                indicator: const CustomTabIndicator(),
-                labelColor: Color(0xFF4266c7),
-                unselectedLabelColor: Colors.black,
-                tabs: [
-                  Tab(text: 'Watchlist'),
-                  Tab(text: 'Indian Indices'),
-                  Tab(text: 'Global indices'),
-                  Tab(text: 'Leaderboard'),
+            drawer: SideBar(),
+            backgroundColor: kHomeScaffoldColor,
+            body: NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                SliverAppBar(
+                  elevation: 0,
+                  leading: Builder(
+                    builder: (context) => IconButton(
+                      padding: const EdgeInsets.only(left: 15),
+                      color: Colors.black,
+                      icon: const Icon(
+                        Icons.person,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                  floating: true,
+                  snap: true,
+                  pinned: true,
+                  title: Image.asset(
+                    'images/logo.png',
+                    width: 200,
+                  ),
+                  centerTitle: true,
+                  bottom: TabBar(
+                    isScrollable: true,
+                    indicator: const CustomTabIndicator(),
+                    labelColor: Color(0xFF4266c7),
+                    unselectedLabelColor: Colors.black,
+                    tabs: [
+                      Tab(text: 'Watchlist'),
+                      Tab(text: 'Indian Indices'),
+                      Tab(text: 'Global indices'),
+                      Tab(text: 'Leaderboard'),
+                    ],
+                  ),
+                ),
+              ],
+              body: TabBarView(
+                children: <Widget>[
+                  WatchlistTab(),
+                  IndianIndicesTab(),
+                  GlobalIndicesTab(),
+                  LeaderBoardTableTab(),
                 ],
               ),
-            ),
-          ),
-          body: TabBarView(
-            children: <Widget>[
-              WatchlistTab(),
-              IndianIndicesTab(),
-              GlobalIndicesTab(),
-              LeaderBoardTableTab(),
-            ],
-          ),
-        ));
+            )));
   }
 }

@@ -11,7 +11,7 @@ class SignalsTab extends StatelessWidget {
       {
         'imageVisibility': true,
         'cardHeading': 'Charts',
-        'imagePath': 'images/signalsimage1.png',
+        'imagePath': 'images/read tab images/market01.jpg',
         'publisherPhoto': 'images/salman faris.png',
         'publisherName': 'By Salman',
         'newsDescription':
@@ -20,7 +20,7 @@ class SignalsTab extends StatelessWidget {
       {
         'imageVisibility': true,
         'cardHeading': 'Market Updates',
-        'imagePath': 'images/signalsimage1.png',
+        'imagePath': 'images/read tab images/market02.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
@@ -47,7 +47,7 @@ class SignalsTab extends StatelessWidget {
       {
         'imageVisibility': true,
         'cardHeading': 'Charts',
-        'imagePath': 'images/signalsimage1.png',
+        'imagePath': 'images/read tab images/market03.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':

@@ -7,56 +7,56 @@ class ReadMarketTab extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map> readMarketCardDataList = [
       {
-        'imagePath': 'images/readmarket1.png',
+        'imagePath': 'images/read tab images/market06.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readJargonsImage1.jpg',
+        'imagePath': 'images/read tab images/market02.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readEditorial image.jpg',
+        'imagePath': 'images/read tab images/market03.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readmarket1.png',
+        'imagePath': 'images/read tab images/market04.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readJargonsImage1.jpg',
+        'imagePath': 'images/read tab images/market10.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readEditorial image.jpg',
+        'imagePath': 'images/read tab images/market06.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readEditorial image.jpg',
+        'imagePath': 'images/read tab images/market12.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':
             'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
       },
       {
-        'imagePath': 'images/readEditorial image.jpg',
+        'imagePath': 'images/read tab images/market02.jpg',
         'publisherPhoto': 'images/AJAY AJITH.png',
         'publisherName': 'By Ajay Ajith',
         'newsDescription':

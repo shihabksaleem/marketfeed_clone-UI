@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 List<Map> readEditorialCardDataList = [
   {
-    'imagePath': 'images/readEditorial image.jpg',
+    'imagePath': 'images/read tab images/market07.jpg',
     'publisherPhoto': 'images/AJAY AJITH.png',
     'publisherName': 'By Ajay Ajith',
     'newsDescription':
         'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
   },
   {
-    'imagePath': 'images/readJargonsImage1.jpg',
+    'imagePath': 'images/read tab images/market06.jpg',
     'publisherPhoto': 'images/AJAY AJITH.png',
     'publisherName': 'By Ajay Ajith',
     'newsDescription':
         'Indias Inflation Drops. US CPI Tonight - Pre Market Analysis',
   },
   {
-    'imagePath': 'images/readmarket1.png',
+    'imagePath': 'images/read tab images/market09.jpg',
     'publisherPhoto': 'images/AJAY AJITH.png',
     'publisherName': 'By Ajay Ajith',
     'newsDescription':

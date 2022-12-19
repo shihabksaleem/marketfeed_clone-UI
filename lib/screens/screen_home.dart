@@ -16,11 +16,15 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
-  int selectodIndex = 0;
+  int _selectedIndex = 0;
+  bool appBarVisible = true;
 
   _onItemTapped(int index) {
     setState(() {
-      selectodIndex = index;
+      _selectedIndex = index;
+      _selectedIndex == 1 || _selectedIndex == 3
+          ? appBarVisible = false
+          : appBarVisible = true;
     });
   }
 
@@ -35,29 +39,31 @@ class _ScreenHomeState extends State<ScreenHome> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: Builder(
-          builder: (context) => IconButton(
-            padding: const EdgeInsets.only(left: 15),
-            color: Colors.black,
-            icon: const Icon(
-              Icons.person,
-              size: 30,
-            ),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
-        ),
-        centerTitle: true,
-        title: Image.asset(
-          'images/logo.png',
-          width: 200,
-        ),
-      ),
+      appBar: appBarVisible
+          ? AppBar(
+              elevation: 0,
+              leading: Builder(
+                builder: (context) => IconButton(
+                  padding: const EdgeInsets.only(left: 15),
+                  color: Colors.black,
+                  icon: const Icon(
+                    Icons.person,
+                    size: 30,
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                ),
+              ),
+              centerTitle: true,
+              title: Image.asset(
+                'images/logo.png',
+                width: 200,
+              ),
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: selectodIndex,
+          currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           selectedItemColor: kActiveIconColor,
           type: BottomNavigationBarType.fixed,
@@ -71,7 +77,7 @@ class _ScreenHomeState extends State<ScreenHome> {
           ]),
       drawer: SideBar(),
       backgroundColor: kHomeScaffoldColor,
-      body: _selectedTabList.elementAt(selectodIndex),
+      body: _selectedTabList.elementAt(_selectedIndex),
     );
   }
 }

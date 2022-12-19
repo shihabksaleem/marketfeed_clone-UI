@@ -19,7 +19,10 @@ class ReusableButton extends StatelessWidget {
       onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Text(buttonText),
+        child: Text(
+          buttonText,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
       ),
     );
   }

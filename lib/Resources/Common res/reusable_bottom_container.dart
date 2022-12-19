@@ -39,16 +39,16 @@ class _ReusableBottomContainerState extends State<ReusableBottomContainer> {
           mobileNumberDisplay == true
               ? const Text(
                   'Login with Mobile Number',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                 )
               : const Text(
                   'Setup Your Account',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                 ),
           const SizedBox(height: 5),
           Text(
             'All your stock market needs in one place',
-            style: TextStyle(color: Colors.grey.shade600, fontSize: 11),
+            style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
           ),
           const SizedBox(height: 25),
           mobileNumberDisplay == true

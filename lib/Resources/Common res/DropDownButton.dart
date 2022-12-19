@@ -17,7 +17,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       underline: Container(),
       value: dropdownValue,
       style: const TextStyle(
-          color: Colors.black, fontSize: 13, fontWeight: FontWeight.bold),
+          color: Colors.black, fontSize: 13, fontWeight: FontWeight.w500),
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
