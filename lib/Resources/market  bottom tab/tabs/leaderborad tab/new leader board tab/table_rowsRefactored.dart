@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Table_Headings_Refactored.dart';
+import '../Table_Headings_Refactored.dart';
 
 TableRow TableRowsRefactored({required text, required LTP, required change}) {
   return TableRow(children: [

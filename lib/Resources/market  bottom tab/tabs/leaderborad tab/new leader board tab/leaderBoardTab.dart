@@ -36,11 +36,10 @@ class _LeaderBoardrTabState extends State<LeaderBoardrTab> {
   }
 
   static var selectedIndexOption = ValueNotifier(indexOptions.first);
-  static String? selectedLoserGainerOption = looserGainer.first;
+  static var selectedLoserGainerOption = ValueNotifier(looserGainer.first);
+  bool isIndex = true;
   @override
   Widget build(BuildContext context) {
-    // bool isIndex = true;
-
     return Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
@@ -48,13 +47,19 @@ class _LeaderBoardrTabState extends State<LeaderBoardrTab> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                LeadersTopContainer(
-                  onTap: () {
-                    setState(() {
-                      BottomSheetExtracted(context);
-                    });
+                ValueListenableBuilder(
+                  valueListenable: selectedLoserGainerOption,
+                  builder: (BuildContext context, value, child) {
+                    return LeadersTopContainer(
+                      onTap: () {
+                        setState(() {
+                          isIndex = false;
+                          BottomSheetExtracted(context);
+                        });
+                      },
+                      seletedOption: selectedLoserGainerOption.value,
+                    );
                   },
-                  seletedOption: selectedLoserGainerOption!,
                 ),
                 ValueListenableBuilder(
                   valueListenable: selectedIndexOption,
@@ -62,6 +67,7 @@ class _LeaderBoardrTabState extends State<LeaderBoardrTab> {
                     return LeadersTopContainer(
                       onTap: () {
                         setState(() {
+                          isIndex = true;
                           BottomSheetExtracted(context);
                         });
                       },
@@ -89,7 +95,8 @@ class _LeaderBoardrTabState extends State<LeaderBoardrTab> {
         ),
       ),
       context: context,
-      builder: (context) => BottomSheetIndexContents(),
+      builder: (context) =>
+          isIndex ? BottomSheetIndexContents() : BottomSheetGainerLooser(),
     );
   }
 }
@@ -131,6 +138,7 @@ class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
                     child: Row(
                       children: [
                         Radio(
+                          activeColor: Color(0xFF4266c7),
                           value: indexOptions[index],
                           groupValue: SelectedValue,
                           onChanged: (value) {
@@ -174,6 +182,99 @@ class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
                     setState(() {
                       _LeaderBoardrTabState.selectedIndexOption.value =
                           SelectedValue;
+                    });
+                  },
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BottomSheetGainerLooser extends StatefulWidget {
+  const BottomSheetGainerLooser({super.key});
+
+  @override
+  State<BottomSheetGainerLooser> createState() =>
+      _BottomSheetGainerLooserState();
+}
+
+class _BottomSheetGainerLooserState extends State<BottomSheetGainerLooser> {
+  static String selectedLoserGainerValue = looserGainer.first;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 300,
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Choose an option',
+            style: TextStyle(fontSize: 20),
+          ),
+          Divider(),
+          Expanded(
+            child: ListView.builder(
+              itemCount: looserGainer.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedLoserGainerValue = looserGainer[index];
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        Radio(
+                          activeColor: Color(0xFF4266c7),
+                          value: looserGainer[index],
+                          groupValue: selectedLoserGainerValue,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedLoserGainerValue = looserGainer[index];
+                            });
+                          },
+                        ),
+                        Text(looserGainer[index])
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: ReusableButton(
+                  buttoncolor: false,
+                  buttonText: 'Reset',
+                  onPressed: () {
+                    _LeaderBoardrTabState.selectedLoserGainerOption.value =
+                        looserGainer.first;
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: ReusableButton(
+                  buttonText: 'Confirm',
+                  onPressed: () {
+                    Navigator.pop(context);
+                    setState(() {
+                      _LeaderBoardrTabState.selectedLoserGainerOption.value =
+                          selectedLoserGainerValue;
                     });
                   },
                 ),

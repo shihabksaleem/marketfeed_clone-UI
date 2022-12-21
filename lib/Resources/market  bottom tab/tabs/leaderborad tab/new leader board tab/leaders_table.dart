@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Table_Headings_Refactored.dart';
+import '../Table_Headings_Refactored.dart';
 import 'table_rowsRefactored.dart';
 
 class leaderBoardTableRefactored extends StatelessWidget {
