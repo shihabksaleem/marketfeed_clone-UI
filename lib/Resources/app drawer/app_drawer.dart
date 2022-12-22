@@ -1,8 +1,29 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-class SideBar extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+
+class SideBar extends StatefulWidget {
+  @override
+  State<SideBar> createState() => _SideBarState();
+}
+
+class _SideBarState extends State<SideBar> {
+  File? _image;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemporary = File(image.path);
+      setState(() => _image = imageTemporary);
+    } on PlatformException catch (e) {
+      print('Failed to pick image : $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -35,14 +56,12 @@ class SideBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
+                      GestureDetector(
+                        onTap: () => pickImage(),
+                        child: Container(
                           width: 75,
                           height: 75,
                           decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                'images/profilePicture.jpg',
-                              )),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.shade300,
@@ -63,7 +82,14 @@ class SideBar extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(15))),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                          )),
+                            child: _image == null
+                                ? Image.asset('images/profilePicture.jpg',
+                                    fit: BoxFit.fill)
+                                // Use the Image.file widget to display the selected image
+                                : Image.file(_image!),
+                          ),
+                        ),
+                      ),
                       SizedBox(
                         height: 12,
                       ),

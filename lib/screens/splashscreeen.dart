@@ -3,9 +3,6 @@ import 'dart:async';
 import 'package:day_1_dec_8/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 class SplashScreen extends StatefulWidget {
   static String id = 'Splash_screen';
 
@@ -33,7 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset('images/logo.png'),
+        child: Image.asset(
+          'images/marketfeed-animated-unscreen.gif',
+          width: MediaQuery.of(context).size.width * .60,
+        ),
       ),
     );
   }

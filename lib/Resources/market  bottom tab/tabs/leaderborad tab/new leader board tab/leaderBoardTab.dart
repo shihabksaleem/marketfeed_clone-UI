@@ -110,6 +110,12 @@ class BottomSheetIndexContents extends StatefulWidget {
 class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
   // late String SelectedValue;
   static String SelectedValue = indexOptions.first;
+  String tempValue = SelectedValue;
+  @override
+  void initState() {
+    print(SelectedValue);
+    print(tempValue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,9 +125,22 @@ class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Choose an option',
-            style: TextStyle(fontSize: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Choose an option',
+                style: TextStyle(fontSize: 20),
+              ),
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      SelectedValue = tempValue;
+                      Navigator.pop(context);
+                    });
+                  },
+                  icon: Icon(Icons.close_sharp))
+            ],
           ),
           Divider(),
           Expanded(
@@ -165,9 +184,9 @@ class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
                   buttoncolor: false,
                   buttonText: 'Reset',
                   onPressed: () {
-                    _LeaderBoardrTabState.selectedIndexOption.value =
-                        indexOptions.first;
-                    Navigator.pop(context);
+                    setState(() {
+                      SelectedValue = tempValue;
+                    });
                   },
                 ),
               ),
@@ -178,10 +197,10 @@ class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
                 child: ReusableButton(
                   buttonText: 'Confirm',
                   onPressed: () {
-                    Navigator.pop(context);
                     setState(() {
                       _LeaderBoardrTabState.selectedIndexOption.value =
                           SelectedValue;
+                      Navigator.pop(context);
                     });
                   },
                 ),
@@ -204,17 +223,31 @@ class BottomSheetGainerLooser extends StatefulWidget {
 
 class _BottomSheetGainerLooserState extends State<BottomSheetGainerLooser> {
   static String selectedLoserGainerValue = looserGainer.first;
+  String temporaryValue = selectedLoserGainerValue;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 250,
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Choose an option',
-            style: TextStyle(fontSize: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Choose an option',
+                style: TextStyle(fontSize: 20),
+              ),
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedLoserGainerValue = temporaryValue;
+                      Navigator.pop(context);
+                    });
+                  },
+                  icon: Icon(Icons.close_sharp))
+            ],
           ),
           Divider(),
           Expanded(
@@ -258,9 +291,9 @@ class _BottomSheetGainerLooserState extends State<BottomSheetGainerLooser> {
                   buttoncolor: false,
                   buttonText: 'Reset',
                   onPressed: () {
-                    _LeaderBoardrTabState.selectedLoserGainerOption.value =
-                        looserGainer.first;
-                    Navigator.pop(context);
+                    setState(() {
+                      selectedLoserGainerValue = temporaryValue;
+                    });
                   },
                 ),
               ),
