@@ -119,95 +119,105 @@ class _BottomSheetIndexContentsState extends State<BottomSheetIndexContents> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.75,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Choose an option',
-                style: TextStyle(fontSize: 20),
-              ),
-              IconButton(
-                  onPressed: () {
-                    setState(() {
-                      SelectedValue = tempValue;
-                      Navigator.pop(context);
-                    });
-                  },
-                  icon: Icon(Icons.close_sharp))
-            ],
-          ),
-          Divider(),
-          Expanded(
-            child: ListView.builder(
-              itemCount: indexOptions.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: InkWell(
-                    onTap: () {
+    popfunction() {
+      SelectedValue = tempValue;
+      Navigator.pop(context, true);
+    }
+
+    return WillPopScope(
+      onWillPop: () async {
+        return popfunction() ?? false;
+      },
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.75,
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Choose an option',
+                  style: TextStyle(fontSize: 20),
+                ),
+                IconButton(
+                    onPressed: () {
                       setState(() {
-                        SelectedValue = indexOptions[index];
+                        SelectedValue = tempValue;
+                        Navigator.pop(context);
                       });
                     },
-                    child: Row(
-                      children: [
-                        Radio(
-                          activeColor: Color(0xFF4266c7),
-                          value: indexOptions[index],
-                          groupValue: SelectedValue,
-                          onChanged: (value) {
-                            setState(() {
-                              SelectedValue = indexOptions[index];
-                            });
-                          },
-                        ),
-                        Text(indexOptions[index])
-                      ],
-                    ),
-                  ),
-                );
-              },
+                    icon: Icon(Icons.close_sharp))
+              ],
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: ReusableButton(
-                  buttoncolor: false,
-                  buttonText: 'Reset',
-                  onPressed: () {
-                    setState(() {
-                      SelectedValue = tempValue;
-                    });
-                  },
-                ),
+            Divider(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: indexOptions.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          SelectedValue = indexOptions[index];
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Radio(
+                            activeColor: Color(0xFF4266c7),
+                            value: indexOptions[index],
+                            groupValue: SelectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                SelectedValue = indexOptions[index];
+                              });
+                            },
+                          ),
+                          Text(indexOptions[index])
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: ReusableButton(
-                  buttonText: 'Confirm',
-                  onPressed: () {
-                    setState(() {
-                      _LeaderBoardrTabState.selectedIndexOption.value =
-                          SelectedValue;
-                      Navigator.pop(context);
-                    });
-                  },
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ReusableButton(
+                    buttoncolor: false,
+                    buttonText: 'Reset',
+                    onPressed: () {
+                      setState(() {
+                        SelectedValue = tempValue;
+                      });
+                    },
+                  ),
                 ),
-              )
-            ],
-          )
-        ],
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: ReusableButton(
+                    buttonText: 'Confirm',
+                    onPressed: () {
+                      setState(() {
+                        _LeaderBoardrTabState.selectedIndexOption.value =
+                            SelectedValue;
+                        Navigator.pop(context);
+                      });
+                    },
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -226,95 +236,107 @@ class _BottomSheetGainerLooserState extends State<BottomSheetGainerLooser> {
   String temporaryValue = selectedLoserGainerValue;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 250,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Choose an option',
-                style: TextStyle(fontSize: 20),
-              ),
-              IconButton(
-                  onPressed: () {
-                    setState(() {
-                      selectedLoserGainerValue = temporaryValue;
-                      Navigator.pop(context);
-                    });
-                  },
-                  icon: Icon(Icons.close_sharp))
-            ],
-          ),
-          Divider(),
-          Expanded(
-            child: ListView.builder(
-              itemCount: looserGainer.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: InkWell(
-                    onTap: () {
+    popfunction() {
+      setState(() {
+        selectedLoserGainerValue = temporaryValue;
+        Navigator.pop(context, true);
+      });
+    }
+
+    return WillPopScope(
+      onWillPop: () async {
+        return popfunction() ?? false;
+      },
+      child: Container(
+        height: 250,
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Choose an option',
+                  style: TextStyle(fontSize: 20),
+                ),
+                IconButton(
+                    onPressed: () {
                       setState(() {
-                        selectedLoserGainerValue = looserGainer[index];
+                        selectedLoserGainerValue = temporaryValue;
+                        Navigator.pop(context);
                       });
                     },
-                    child: Row(
-                      children: [
-                        Radio(
-                          activeColor: Color(0xFF4266c7),
-                          value: looserGainer[index],
-                          groupValue: selectedLoserGainerValue,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedLoserGainerValue = looserGainer[index];
-                            });
-                          },
-                        ),
-                        Text(looserGainer[index])
-                      ],
-                    ),
-                  ),
-                );
-              },
+                    icon: Icon(Icons.close_sharp))
+              ],
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: ReusableButton(
-                  buttoncolor: false,
-                  buttonText: 'Reset',
-                  onPressed: () {
-                    setState(() {
-                      selectedLoserGainerValue = temporaryValue;
-                    });
-                  },
-                ),
+            Divider(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: looserGainer.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedLoserGainerValue = looserGainer[index];
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Radio(
+                            activeColor: Color(0xFF4266c7),
+                            value: looserGainer[index],
+                            groupValue: selectedLoserGainerValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedLoserGainerValue = looserGainer[index];
+                              });
+                            },
+                          ),
+                          Text(looserGainer[index])
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
-              SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: ReusableButton(
-                  buttonText: 'Confirm',
-                  onPressed: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _LeaderBoardrTabState.selectedLoserGainerOption.value =
-                          selectedLoserGainerValue;
-                    });
-                  },
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ReusableButton(
+                    buttoncolor: false,
+                    buttonText: 'Reset',
+                    onPressed: () {
+                      setState(() {
+                        selectedLoserGainerValue = temporaryValue;
+                      });
+                    },
+                  ),
                 ),
-              )
-            ],
-          )
-        ],
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: ReusableButton(
+                    buttonText: 'Confirm',
+                    onPressed: () {
+                      Navigator.pop(context);
+                      setState(() {
+                        _LeaderBoardrTabState.selectedLoserGainerOption.value =
+                            selectedLoserGainerValue;
+                      });
+                    },
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

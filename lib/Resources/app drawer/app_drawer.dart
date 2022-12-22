@@ -5,14 +5,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideBar extends StatefulWidget {
+  static Image? galImage;
   @override
   State<SideBar> createState() => _SideBarState();
 }
 
 class _SideBarState extends State<SideBar> {
   File? _image;
+
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -21,6 +24,17 @@ class _SideBarState extends State<SideBar> {
       setState(() => _image = imageTemporary);
     } on PlatformException catch (e) {
       print('Failed to pick image : $e');
+    }
+    SideBar.galImage = Image.file(_image!);
+  }
+
+  loadMarketfeedWebsite() async {
+    print('about marketfeed');
+    Uri uri = Uri.parse("https://marketfeed.com/");
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      // can't launch url
     }
   }
 
@@ -82,11 +96,9 @@ class _SideBarState extends State<SideBar> {
                                   BorderRadius.all(Radius.circular(15))),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child: _image == null
-                                ? Image.asset('images/profilePicture.jpg',
-                                    fit: BoxFit.fill)
-                                // Use the Image.file widget to display the selected image
-                                : Image.file(_image!),
+                            child: SideBar.galImage ??
+                                Image.asset('images/profilePicture.jpg',
+                                    fit: BoxFit.fill),
                           ),
                         ),
                       ),
@@ -113,10 +125,14 @@ class _SideBarState extends State<SideBar> {
                   )),
             ),
             SidebarTextTile(
+              onTap: () {
+                print('Bokkmark pressed');
+              },
               title: 'My Bookmarks',
               icon: Icons.bookmark_border,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Open Demat Account',
               icon: Icons.card_travel,
             ),
@@ -126,30 +142,37 @@ class _SideBarState extends State<SideBar> {
               endIndent: 20,
             ),
             SidebarTextTile(
+              onTap: () => loadMarketfeedWebsite(),
               title: 'About Marketfeed',
               icon: Icons.business,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Privacy Policy',
               icon: Icons.privacy_tip_outlined,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Terms of Use',
               icon: Icons.info_outlined,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Support',
               icon: Icons.mail_outline,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Share with friends!',
               icon: Icons.share,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Delete Account',
               icon: Icons.person_remove_alt_1_outlined,
             ),
             SidebarTextTile(
+              onTap: () {},
               title: 'Logout',
               color: Colors.red,
               icon: Icons.logout,
@@ -193,15 +216,20 @@ class _SideBarState extends State<SideBar> {
 class SidebarTextTile extends StatelessWidget {
   final String title;
   final IconData icon;
+  final VoidCallback onTap;
   Color? color = Colors.black;
 
+  // ignore: use_key_in_widget_constructors
   SidebarTextTile(
-      {super.key, required this.title, required this.icon, this.color});
+      {required this.title,
+      required this.icon,
+      this.color,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: ListTile(
         contentPadding: EdgeInsets.only(left: 20),
         leading: Icon(icon),
