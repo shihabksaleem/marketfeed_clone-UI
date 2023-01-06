@@ -120,10 +120,13 @@ class ReadMarketTabRefacted extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 15),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    imagePath,
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
